@@ -86,7 +86,7 @@ const Navbar = () => {
         <div className={classes.icons}>
           <Search
             className={classes.searchButton}
-            onClick={() => setOpen(true)}
+            onClick={() => setOpen(true)} /** Click search button để open Search text box */
           />
           <Badge badgeContent={4} color="secondary" className={classes.badge}>
             <Mail />
