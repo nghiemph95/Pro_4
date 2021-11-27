@@ -8,7 +8,7 @@ import {
   Toolbar,
   Typography,
 } from "@material-ui/core";
-import { Mail, Notifications, Search } from "@material-ui/icons";
+import { Cancel, Mail, Notifications, Search } from "@material-ui/icons";
 import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
         props.open
           ? "flex"
           : "none" /** If props open is True, make Flex, if false, make none */,
+      width: "70%",
     },
   },
 
@@ -53,13 +54,25 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
   },
 
+  cancel: {
+    [theme.breakpoints.up("sm")]: {
+      display: "none",
+    },
+  },
+
   searchButton: {
     marginRight: theme.spacing(2),
+    [theme.breakpoints.up("sm")]: {
+      display: "none",
+    },
   },
 
   icons: {
-    display: "flex",
     alignItems: "center",
+    display: (props) =>
+      props.open
+        ? "none"
+        : "flex" /** If props open is True, make Flex, if false, make none */,
   },
 
   badge: {
@@ -71,22 +84,25 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const classes = useStyles({ open });
   return (
-    <AppBar>
+    <AppBar position="fixed">
       <Toolbar className={classes.toolbar}>
         <Typography variant="h6" className={classes.logoLg}>
           Market Online
         </Typography>
         <Typography variant="h6" className={classes.logoSm}>
-          Test
+          Market 
         </Typography>
         <div className={classes.search}>
           <Search />
           <InputBase placeholder="Search..." className={classes.input} />
+          <Cancel className={classes.cancel} onClick={() => setOpen(false)} />
         </div>
         <div className={classes.icons}>
           <Search
             className={classes.searchButton}
-            onClick={() => setOpen(true)} /** Click search button để open Search text box */
+            onClick={() =>
+              setOpen(true)
+            } /** Click search button để open Search text box */
           />
           <Badge badgeContent={4} color="secondary" className={classes.badge}>
             <Mail />
