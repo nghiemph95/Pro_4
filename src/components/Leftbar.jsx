@@ -1,4 +1,4 @@
-import { Container, List, makeStyles, Typography } from "@material-ui/core";
+import { Container, makeStyles, Typography } from "@material-ui/core";
 import {
   Bookmark,
   ExitToApp,
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     paddingTop: theme.spacing(10),
     backgroundColor: theme.palette.primary.main,
-    position: "sticky",
+    position: "sticky", // giữ leftbar ko di chuyển khi cuộn trang
     top: 0,
     [theme.breakpoints.up("sm")]: {
       backgroundColor: "white",
